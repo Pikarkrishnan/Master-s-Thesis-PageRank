@@ -1,0 +1,14 @@
+%MATLAB Code
+%Cleve Moler's function to create adjacency matrix
+[U,L]=surfer('https://arxiv.org',10)
+%Formulating a digraph
+G=digraph(L,U)
+%Plotting the digraph
+p=plot(G)
+%Calculating PageRank Centrality
+pr = centrality(G,'pagerank','FollowProbability',0.85)
+%View the PageRank scores and degree information for each page.
+G.Nodes.PageRank = pr;
+G.Nodes.InDegree = indegree(G);
+G.Nodes.OutDegree = outdegree(G);
+G.Nodes
